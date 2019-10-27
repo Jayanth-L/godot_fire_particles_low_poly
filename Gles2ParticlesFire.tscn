@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=12]
+material = SubResource( 11 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.242554, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.374137, 0.632 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 1, 0, 0, 1, 0.933333, 0.827451, 0.337255, 1 )
+
+[sub_resource type="Curve" id=15]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.208228, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.740283, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0314 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Gles2ParticlesFire" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04921, 0.597924, -1.10425 )
+
+[node name="Flame" type="CPUParticles" parent="."]
+amount = 40
+mesh = SubResource( 12 )
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3( 0, 4, 0 )
+angular_velocity = 45.0
+angular_velocity_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 14 )
+
+[node name="Smoke" type="CPUParticles" parent="."]
+amount = 40
+lifetime = 2.0
+mesh = SubResource( 12 )
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 0.0
+gravity = Vector3( 0, 4, 0 )
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 15 )
+color = Color( 0.605469, 0.605469, 0.605469, 0.0862745 )
